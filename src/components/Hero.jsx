@@ -5,9 +5,9 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-soft-pink to-cream pt-20 overflow-hidden"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-soft-pink to-cream pt-20 overflow-hidden relative w-full"
     >
-      <div className="container mx-auto px-4 md:px-6 py-12 md:py-20 text-center">
+      <div className="container mx-auto px-4 md:px-6 py-12 md:py-20 text-center relative z-10 w-full max-w-full">
         {/* Host Image */}
         <motion.div 
           className="mb-6 md:mb-8"
@@ -81,16 +81,16 @@ const Hero = () => {
         {[...Array(15)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute text-primary-red opacity-10"
+            className="absolute text-primary-red opacity-10 pointer-events-none"
             style={{
-              left: `${5 + i * 6.5}%`,
+              left: `${Math.max(5, Math.min(5 + i * 6.5, 95))}%`,
               fontSize: `${25 + (i % 5) * 12}px`
             }}
             initial={{ y: 100, opacity: 0 }}
             animate={{ 
               y: [-100, -900],
               opacity: [0, 0.15, 0.25, 0.15, 0],
-              x: [0, Math.sin(i) * 60, Math.cos(i) * 40, 0],
+              x: [0, Math.sin(i) * 40, Math.cos(i) * 30, 0],
               rotate: [0, 15, -15, 0]
             }}
             transition={{
@@ -108,9 +108,9 @@ const Hero = () => {
         {[...Array(10)].map((_, i) => (
           <motion.div
             key={`extra-${i}`}
-            className="absolute opacity-10"
+            className="absolute opacity-10 pointer-events-none"
             style={{
-              left: `${10 + i * 9}%`,
+              left: `${Math.max(10, Math.min(10 + i * 9, 90))}%`,
               fontSize: `${20 + (i % 4) * 8}px`,
               color: i % 2 === 0 ? '#D82C4F' : '#E8B85C'
             }}
