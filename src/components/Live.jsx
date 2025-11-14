@@ -4,7 +4,6 @@ import { Radio, Calendar, Clock } from 'lucide-react';
 
 const Live = () => {
   const [isLive, setIsLive] = useState(false);
-  const [loading, setLoading] = useState(true);
   
   // Get channel ID from environment variable
   const channelId = process.env.REACT_APP_YOUTUBE_CHANNEL_ID;
@@ -33,12 +32,9 @@ const Live = () => {
           console.log('Channel is offline');
           setIsLive(false);
         }
-        
-        setLoading(false);
       } catch (error) {
         console.error('Error checking live status:', error);
         setIsLive(false);
-        setLoading(false);
       }
     };
     
@@ -49,8 +45,6 @@ const Live = () => {
       const interval = setInterval(checkLiveStatus, 5 * 60 * 1000);
       
       return () => clearInterval(interval);
-    } else {
-      setLoading(false);
     }
   }, [channelId, apiKey]);
   
