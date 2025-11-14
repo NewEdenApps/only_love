@@ -7,10 +7,10 @@ const Hero = () => {
       id="home"
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-soft-pink to-cream pt-20 overflow-hidden"
     >
-      <div className="container mx-auto px-6 py-20 text-center">
+      <div className="container mx-auto px-4 md:px-6 py-12 md:py-20 text-center">
         {/* Host Image */}
         <motion.div 
-          className="mb-8"
+          className="mb-6 md:mb-8"
           initial={{ scale: 0, rotate: -180 }}
           animate={{ scale: 1, rotate: 0 }}
           transition={{ 
@@ -21,7 +21,7 @@ const Hero = () => {
           }}
         >
           <motion.div 
-            className="w-48 h-48 mx-auto rounded-full bg-gradient-to-br from-primary-red to-gold-accent p-1"
+            className="w-32 h-32 md:w-48 md:h-48 mx-auto rounded-full bg-gradient-to-br from-primary-red to-gold-accent p-1"
             animate={{ 
               boxShadow: [
                 "0 0 20px rgba(216, 44, 79, 0.3)",
@@ -50,7 +50,7 @@ const Hero = () => {
 
         {/* Show Name */}
         <motion.h1 
-          className="text-6xl md:text-7xl lg:text-8xl font-playfair font-bold text-primary-red mb-4"
+          className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-playfair font-bold text-primary-red mb-3 md:mb-4 px-4"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
@@ -59,7 +59,7 @@ const Hero = () => {
         </motion.h1>
         
         <motion.p 
-          className="text-2xl md:text-3xl font-playfair text-gold-accent mb-8"
+          className="text-xl md:text-2xl lg:text-3xl font-playfair text-gold-accent mb-6 md:mb-8 px-4"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
@@ -69,7 +69,7 @@ const Hero = () => {
 
         {/* Tagline */}
         <motion.h3 
-          className="text-xl md:text-2xl font-lato text-dark-gray mb-12 max-w-2xl mx-auto"
+          className="text-lg md:text-xl lg:text-2xl font-lato text-dark-gray mb-8 md:mb-12 max-w-2xl mx-auto px-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.8 }}
