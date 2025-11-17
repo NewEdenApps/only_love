@@ -4,11 +4,11 @@ import { Radio, Calendar, Clock } from 'lucide-react';
 
 const Live = () => {
   const [isLive, setIsLive] = useState(false);
+  const [liveVideoId, setLiveVideoId] = useState(null);
   
   // Get channel ID from environment variable
   const channelId = process.env.REACT_APP_YOUTUBE_CHANNEL_ID;
   const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY;
-  const liveStreamUrl = `https://www.youtube.com/embed/live_stream?channel=${channelId}&autoplay=0`;
   
   useEffect(() => {
     const checkLiveStatus = async () => {
@@ -24,17 +24,20 @@ const Live = () => {
         
         const data = await response.json();
         
-        // If there are any live videos, set isLive to true
+        // If there are any live videos, set isLive to true and get the video ID
         if (data.items && data.items.length > 0) {
           console.log('Channel is LIVE!');
           setIsLive(true);
+          setLiveVideoId(data.items[0].id.videoId);
         } else {
           console.log('Channel is offline');
           setIsLive(false);
+          setLiveVideoId(null);
         }
       } catch (error) {
         console.error('Error checking live status:', error);
         setIsLive(false);
+        setLiveVideoId(null);
       }
     };
     
@@ -97,7 +100,7 @@ const Live = () => {
                 {/* YouTube Embed */}
                 <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
                   <iframe
-                    src={liveStreamUrl}
+                    src={`https://www.youtube.com/embed/${liveVideoId}?autoplay=0`}
                     title="Only Love Radio Live Stream"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
